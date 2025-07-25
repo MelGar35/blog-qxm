@@ -6,7 +6,7 @@ const Header: React.FC = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false); // Para el selector de idioma
 
   return (
-    <header className="bg-white shadow-md py-4 px-6 flex items-center justify-between relative z-10"> {/* Añadido z-10 para el menú mobile */}
+    <header className="bg-white shadow-sm py-4 px-2 flex justify-around relative z-10"> {/* Añadido z-10 para el menú mobile */}
       {/* Sección del Logo */}
       <div className="flex items-center">
         {/* Aquí irá el logo de QXM */}
@@ -20,16 +20,16 @@ const Header: React.FC = () => {
       <div className="hidden md:flex items-center space-x-6 lg:space-x-8"> {/* Flex container para alinear todo a la derecha */}
         {/* Enlaces de Navegación */}
         <nav className="flex space-x-6 lg:space-x-8">
-          <a href="#que-es" className="text-gray-700 hover:text-blue-600 text-lg font-medium">¿Qué es Qxm?</a>
-          <a href="#trabajadores" className="text-gray-700 hover:text-blue-600 text-lg font-medium">Trabajadores</a>
-          <a href="#gobiernos" className="text-gray-700 hover:text-blue-600 text-lg font-medium">Gobiernos</a>
+          <a href="#que-es" className="text-qxm-gray hover:underline text-md font-semibold">¿Que es Qxm?</a>
+          <a href="#trabajadores" className="text-qxm-gray hover:underline text-md font-semibold">Trabajadores</a>
+          <a href="#gobiernos" className="text-qxm-gray hover:underline text-md font-semibold">Gobiernos</a>
         </nav>
 
         {/* Botones de Acción */}
         <div className="flex items-center space-x-4 lg:space-x-6">
-          <a href="#iniciar-sesion" className="text-blue-600 hover:text-blue-700 text-lg font-medium">Iniciar sesión</a> {/* Ajustado a enlace con color azul */}
-          <a href="#registrate" className="bg-qxm-pink hover:bg-qxm-pink-dark text-white font-semibold py-2 px-6 rounded-full shadow-md text-lg"> {/* Usamos una clase personalizada para el color rosa */}
-            Regístrate
+          <a href="#iniciar-sesion" className="text-[#0d4676] hover:text-qxm-pink text-md font-semibold">Iniciar sesión</a> {/* Ajustado a enlace con color azul */}
+          <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md shadow-md text-md border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
+          Regístrate
           </a>
 
           {/* Selector de Idioma/País */}

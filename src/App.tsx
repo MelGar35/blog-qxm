@@ -7,7 +7,7 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       <Header /> {/* Aquí se renderiza el componente Header */}
       <main className="container mx-auto p-8 pt-20">
-        <p className="text-center text-gray-600">Contenido principal de tu blog...</p>
+        <p className="text-center text-gray-600">Body...</p>
       </main>
     </div>
   );
