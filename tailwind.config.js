@@ -11,8 +11,8 @@ export default {
         // Colores QXM existentes
         'qxm-pink': '#dd3083',
         'qxm-gray': '#8b9099ff',
+        'qxm-blue': '#0d4676',
 
-        // *************** AÑADE ESTO ***************
         // Mapea tus variables CSS a nombres de colores de Tailwind
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

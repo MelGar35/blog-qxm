@@ -1,5 +1,3 @@
-// src/App.tsx
-
 import { useState } from 'react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback'; 
 
@@ -10,14 +8,14 @@ import {
   Home, List, FileText, Info
 } from "lucide-react";
 
-// *** IMPORTANTE: VERIFICA ESTA RUTA Y NOMBRE DE ARCHIVO EN TU CARPETA src/imports/ ***
+
 import svgPaths from "./imports/svg-xxvk0ukngx"; 
 
 // *** IMPORTANTE: RUTA PARA EL LOGO PNG ***
 const qxmLogoPng = '/images/qxm-logo.png'; 
 
 // --- INTERFACES DE TIPOS ---
-// Define la estructura de un post de blog
+// Define la estructura de un post del blog
 interface BlogPost {
   id: number;
   title: string;
@@ -39,7 +37,6 @@ interface Category {
   count: number;
   color: string;
 }
-// --- FIN INTERFACES DE TIPOS ---
 
 
 // Datos de ejemplo para el blog adaptado a QXM
@@ -223,7 +220,7 @@ function BlogHeader() {
 // Hero Section con estilo QXM
 function HeroSection() {
   return (
-    <div className="bg-[#0065b3] text-white py-16 relative overflow-hidden">
+    <div className="bg-[#0065b3] text-white py-16 relative overflow-hidden"> //ver si cambiamos el color al #0d4676
       {/* Elementos decorativos de fondo usando svgPaths */}
       <div className="absolute top-0 left-0 w-32 h-32 opacity-20">
         <svg viewBox="0 0 129 81" fill="none" className="w-full h-full">
