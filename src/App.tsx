@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback'; 
+import Header from "./components/Header";
+import qxmLogoPng from './assets/logo.png';
 
 // Importaciones de iconos de Lucide React
 import {
-  Search, Bell, Menu, Calendar, Clock, Eye, Heart, Share2, ArrowLeft,
-  TrendingUp, User, MessageCircle, ChevronRight, ThumbsUp, Bookmark,
-  Home, List, FileText, Info
+  Calendar, Clock, Eye, Heart, Share2, ArrowLeft,
+  TrendingUp, User, MessageCircle, ChevronRight, ThumbsUp,
 } from "lucide-react";
 
 
 import svgPaths from "./imports/svg-xxvk0ukngx"; 
 
-// *** IMPORTANTE: RUTA PARA EL LOGO PNG ***
-const qxmLogoPng = '/images/qxm-logo.png'; 
 
 // --- INTERFACES DE TIPOS ---
 // Define la estructura de un post del blog
@@ -147,80 +146,12 @@ const categories: Category[] = [ // Aplicamos el tipo Category[]
 ];
 
 // Header con identidad QXM
-function BlogHeader() {
-  return (
-    <nav className="bg-white shadow-[0px_2px_12px_0px_rgba(13,70,118,0.08)] border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Brand QXM */}
-          <div className="flex items-center">
-            <div className="flex items-center gap-3">
-              <div 
-                className="w-9 h-9 bg-cover bg-center"
-                style={{ backgroundImage: `url('${qxmLogoPng}')` }}
-              />
-              <div>
-                <span className="font-['Comfortaa:Bold',_sans-serif] text-xl text-[#0d4676]">QXM Blog</span>
-                <p className="font-['Barlow:Regular',_sans-serif] text-xs text-[#7d8491]">Consejos para tu hogar</p>
-              </div>
-            </div>
-          </div>
 
-          {/* Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <a href="#" className="flex items-center gap-2 font-['Barlow:Medium',_sans-serif] text-[#5c6474] hover:text-[#0095ff] px-3 py-2 rounded-lg transition-colors">
-              <Home className="w-4 h-4" />
-              Inicio
-            </a>
-            <a href="#" className="flex items-center gap-2 font-['Barlow:Medium',_sans-serif] text-[#5c6474] hover:text-[#0095ff] px-3 py-2 rounded-lg transition-colors">
-              <List className="w-4 h-4" />
-              Categorías
-            </a>
-            <a href="#" className="flex items-center gap-2 font-['Barlow:Medium',_sans-serif] text-[#5c6474] hover:text-[#0095ff] px-3 py-2 rounded-lg transition-colors">
-              <FileText className="w-4 h-4" />
-              Guías
-            </a>
-            <a href="#" className="flex items-center gap-2 font-['Barlow:Medium',_sans-serif] text-[#5c6474] hover:text-[#0095ff] px-3 py-2 rounded-lg transition-colors">
-              <Info className="w-4 h-4" />
-              Sobre QXM
-            </a>
-          </div>
-
-          {/* Search and actions */}
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:block">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-[#7d8491]" />
-                <input
-                  type="text"
-                  placeholder="Buscar consejos..."
-                  className="pl-10 pr-4 py-2 bg-[#f7f8fc] rounded-lg border-none outline-none font-['Barlow:Regular',_sans-serif] text-[#5c6474] placeholder-[#7d8491] focus:ring-2 focus:ring-[#0095ff]"
-                />
-              </div>
-            </div>
-            <button className="p-2 text-[#7d8491] hover:text-[#0095ff] hover:bg-[#f7f8fc] rounded-lg transition-colors">
-              <Bell className="w-5 h-5" />
-            </button>
-            <button className="p-2 text-[#7d8491] hover:text-[#0095ff] hover:bg-[#f7f8fc] rounded-lg transition-colors md:hidden">
-              <div className="w-5 h-5">
-                <svg viewBox="0 0 21 17" fill="none" className="w-full h-full">
-                  <line stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" x1="0.75" y1="1.25" x2="19.379" y2="1.25"/>
-                  <line stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" x1="0.75" y1="15.34" x2="19.379" y2="15.34"/>
-                  <line stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" x1="6.789" y1="8.293" x2="19.379" y2="8.293"/>
-                </svg>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-}
 
 // Hero Section con estilo QXM
 function HeroSection() {
   return (
-    <div className="bg-[#0065b3] text-white py-16 relative overflow-hidden"> //ver si cambiamos el color al #0d4676
+    <div className="bg-[#0065b3] text-white py-16 relative overflow-hidden"> 
       {/* Elementos decorativos de fondo usando svgPaths */}
       <div className="absolute top-0 left-0 w-32 h-32 opacity-20">
         <svg viewBox="0 0 129 81" fill="none" className="w-full h-full">
@@ -582,7 +513,7 @@ function BlogFooter() {
           <div className="col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <div 
-                className="w-10 h-10 bg-cover bg-center"
+                className="w-20 h-20 bg-cover bg-center"
                 style={{ backgroundImage: `url('${qxmLogoPng}')` }}
               />
               <div>
@@ -641,7 +572,7 @@ export default function App() {
   if (selectedPost) {
     return (
       <div className="min-h-screen bg-[#f7f8fc]">
-        <BlogHeader />
+        <Header />
         <PostView 
           post={selectedPost} 
           onBack={() => setSelectedPost(null)} 
@@ -653,7 +584,7 @@ export default function App() {
   
   return (
     <div className="min-h-screen bg-[#f7f8fc]">
-      <BlogHeader />
+      <Header />
       <HeroSection />
       
       <main className="max-w-7xl mx-auto px-4 py-8">
