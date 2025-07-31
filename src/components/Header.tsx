@@ -8,12 +8,12 @@ const Header: React.FC = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false); // Para el selector de idioma
 
   return (
-    <header className="bg-white shadow-sm py-4 px-2 flex justify-around relative z-10"> {/* Añadido z-10 para el menú mobile */}
+    <header className="bg-white shadow-sm py-6 px-4 flex justify-around relative z-10"> {/* Añadido z-10 para el menú mobile */}
       {/* Sección del Logo */}
       <div className="flex items-center">
         {/* logo de QXM */}
         <a href="/" className="text-2xl font-bold text-gray-800">
-          <img src={qxmLogo} alt="QXM Logo" className="h-[60px] w-auto object-contain" /> {/* Ajusta la clase 'h-10 w-auto' según el tamaño deseado */}
+          <img src={qxmLogo} alt="QXM Logo" className="h-10 w-auto" /> {/* Ajusta la clase 'h-10 w-auto' según el tamaño deseado */}
           </a>
       </div>
 
@@ -21,15 +21,15 @@ const Header: React.FC = () => {
       <div className="hidden md:flex items-center space-x-6 lg:space-x-8"> {/* Flex container para alinear todo a la derecha */}
         {/* Enlaces de Navegación */}
         <nav className="flex space-x-6 lg:space-x-8">
-          <a href="#que-es" className="text-qxm-gray hover:underline text-md font-semibold">¿Que es Qxm?</a>
-          <a href="#trabajadores" className="text-qxm-gray hover:underline text-md font-semibold">Trabajadores</a>
-          <a href="#gobiernos" className="text-qxm-gray hover:underline text-md font-semibold">Gobiernos</a>
+          <a href="#que-es" className="text-qxm-gray hover:underline text-2xl font-semibold">¿Que es Qxm?</a>
+          <a href="#trabajadores" className="text-qxm-gray hover:underline text-2xl font-semibold">Trabajadores</a>
+          <a href="#gobiernos" className="text-qxm-gray hover:underline text-2xl font-semibold">Gobiernos</a>
         </nav>
 
         {/* Botones de Acción */}
         <div className="flex items-center space-x-4 lg:space-x-6">
-          <a href="#iniciar-sesion" className="text-[#0d4676] hover:text-qxm-pink text-md font-semibold">Iniciar sesión</a> {/* Ajustado a enlace con color azul */}
-          <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md shadow-md text-md border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
+          <a href="#iniciar-sesion" className="text-[#0d4676] hover:text-qxm-pink text-2xl font-semibold">Iniciar sesión</a> {/* Ajustado a enlace con color azul */}
+          <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md shadow-md text-xl border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
           Regístrate
           </a>
 

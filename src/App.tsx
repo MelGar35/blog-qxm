@@ -145,8 +145,7 @@ const categories: Category[] = [ // Aplicamos el tipo Category[]
   { name: "Electricidad", count: 19, color: "#0095FF" },
 ];
 
-// Header con identidad QXM
-
+//Aca estaba el Header
 
 // Hero Section con estilo QXM
 function HeroSection() {

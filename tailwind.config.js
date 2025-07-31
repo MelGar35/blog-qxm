@@ -80,12 +80,12 @@ export default {
         medium: 'var(--font-weight-medium)',
       },
       // Si usas tamaños de texto personalizados con var(--text-*)
-      fontSize: {
+      /*fontSize: {
         '2xl': 'var(--text-2xl)', // Asegúrate de que --text-2xl esté definido en tu CSS
         xl: 'var(--text-xl)',
         lg: 'var(--text-lg)',
         base: 'var(--text-base)',
-      }
+      }*/
     },
   },
   plugins: [],
