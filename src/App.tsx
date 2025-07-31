@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback'; 
 import Header from "./components/Header";
-import qxmLogoPng from './assets/logo.png';
+import qxmLogoFooter from "./assets/logo_footer.svg"
 
 // Importaciones de iconos de Lucide React
 import {
@@ -163,7 +163,7 @@ function HeroSection() {
         </svg>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 text-center relative ">
         <h1 className="font-['Comfortaa:Bold',_sans-serif] text-4xl md:text-5xl mb-4">Blog QXM</h1>
         <p className="font-['Barlow:Regular',_sans-serif] text-xl text-blue-100 mb-6 max-w-3xl mx-auto">
           Descubre consejos expertos, guías prácticas y las mejores soluciones para tu hogar
@@ -510,15 +510,9 @@ function BlogFooter() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div 
-                className="w-20 h-20 bg-cover bg-center"
-                style={{ backgroundImage: `url('${qxmLogoPng}')` }}
-              />
-              <div>
-                <h5 className="font-['Comfortaa:Bold',_sans-serif] text-lg">QXM Blog</h5>
-                <p className="font-['Barlow:Regular',_sans-serif] text-sm text-blue-200">Consejos para tu hogar</p>
-              </div>
+            <div className="flex items-center gap-3 mb-6">
+              <img src={qxmLogoFooter} alt="QXM Logo Footer" className="h-[35px] w-auto object-contain" />
+             
             </div>
             <p className="font-['Barlow:Regular',_sans-serif] text-blue-100 text-sm leading-relaxed max-w-md">
               Tu fuente confiable para consejos expertos, guías prácticas y las mejores soluciones para mantener tu hogar en perfectas condiciones.

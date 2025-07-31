@@ -21,15 +21,15 @@ const Header: React.FC = () => {
       <div className="hidden md:flex items-center space-x-6 lg:space-x-8"> {/* Flex container para alinear todo a la derecha */}
         {/* Enlaces de Navegación */}
         <nav className="flex space-x-6 lg:space-x-8">
-          <a href="#que-es" className="text-qxm-gray hover:underline text-2xl font-semibold">¿Que es Qxm?</a>
-          <a href="#trabajadores" className="text-qxm-gray hover:underline text-2xl font-semibold">Trabajadores</a>
-          <a href="#gobiernos" className="text-qxm-gray hover:underline text-2xl font-semibold">Gobiernos</a>
+          <a href="#que-es" className="text-qxm-gray hover:underline text-xl font-semibold">¿Que es Qxm?</a>
+          <a href="#trabajadores" className="text-qxm-gray hover:underline text-xl font-semibold">Trabajadores</a>
+          <a href="#gobiernos" className="text-qxm-gray hover:underline text-xl font-semibold">Gobiernos</a>
         </nav>
 
         {/* Botones de Acción */}
         <div className="flex items-center space-x-4 lg:space-x-6">
-          <a href="#iniciar-sesion" className="text-[#0d4676] hover:text-qxm-pink text-2xl font-semibold">Iniciar sesión</a> {/* Ajustado a enlace con color azul */}
-          <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md shadow-md text-xl border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
+          <a href="#iniciar-sesion" className="text-[#0d4676] hover:text-qxm-pink text-xl font-semibold">Iniciar sesión</a> {/* Ajustado a enlace con color azul */}
+          <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md shadow-md text-lg border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
           Regístrate
           </a>
 
