@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback'; 
 import Header from "./components/Header";
 import qxmLogoFooter from "./assets/logo_footer.svg"
+import Pagination from './components/Pagination';
 
 // Importaciones de iconos de Lucide React
 import {
   Share2, ArrowLeft,
-  TrendingUp, User, MessageCircle, ChevronRight,
+  TrendingUp, User, ChevronRight,
 } from "lucide-react";
 
 
@@ -143,7 +144,8 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
     `,
     author: "Carlos Ruiz",
     category: "Mantenimiento",
-    image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=400&fit=crop"
+    image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=400&fit=crop",
+    featured: false
   },
   {
     id: 3,
@@ -160,7 +162,8 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
     `,
     author: "Ana Martínez",
     category: "Reformas",
-    image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=400&fit=crop"
+    image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=400&fit=crop",
+    featured: false
   },
   {
     id: 4,
@@ -169,7 +172,8 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
     content: "",
     author: "Luis Fernández",
     category: "Jardinería",
-    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=400&fit-crop"
+    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=400&fit-crop",
+    featured: false
   },
   {
     id: 5,
@@ -178,8 +182,29 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
     content: "",
     author: "Roberto Silva",
     category: "Electricidad",
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&h=400&fit-crop"
-  }
+    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&h=400&fit-crop",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Beneficios de instalar paneles solares en tu casa",
+    excerpt: "Conoce las ventajas económicas y ambientales de la energía solar para tu hogar.",
+    content: "<p>Contenido sobre paneles solares...</p>",
+    author: "Pedro López",
+    category: "Electricidad",
+    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&h=400&fit-crop",
+    featured: false
+  },
+  {
+    id: 7,
+    title: "Consejos para mantener tu piscina impecable todo el año",
+    excerpt: "Desde el filtrado hasta los químicos, una guía completa para el cuidado de tu piscina.",
+    content: "<p>Contenido sobre mantenimiento de piscinas...</p>",
+    author: "Mariana Díaz",
+        category: "Mantenimiento",
+    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&h=400&fit-crop",
+    featured: false
+  },
 ];
 
 const categories: Category[] = [ // Aplicamos el tipo Category[]
@@ -280,7 +305,7 @@ function FeaturedPost({ post }: { post: BlogPost }) { // Definido el tipo para '
 // Card de post con estilo QXM
 function PostCard({ post }: { post: BlogPost }) { // Definido el tipo para 'post'
   return (
-    <div className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)]  overflow-hidden h-full hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)]  overflow-hidden h-full h">
       <div className="relative">
         <div className="h-48">
           <ImageWithFallback
@@ -502,62 +527,84 @@ function BlogFooter() {
   );
 }
 
-// Componente principal
 export default function App() {
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null); // Definido el tipo para selectedPost
-  
-  const featuredPost: BlogPost | undefined = blogPosts.find(post => post.featured); // Definido el tipo
-  const recentPosts: BlogPost[] = blogPosts.filter(post => !post.featured); // Definido el tipo
-  
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [currentPage, setCurrentPage] = useState(1); // Estado para la página actual
+  const postsPerPage = 2; // Cantidad de notas por página (excluyendo el destacado)
+
+  const featuredPost: BlogPost | undefined = blogPosts.find(post => post.featured);
+  const otherPosts: BlogPost[] = blogPosts.filter(post => !post.featured);
+
+  // Lógica para obtener los posts a mostrar en la página actual
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const currentPaginatedPosts = otherPosts.slice(startIndex, endIndex);
+
+  // Calcula el total de páginas para las "otras notas"
+  const totalPages = Math.ceil(otherPosts.length / postsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Opcional: Desplazarse al principio de la página después de cambiar de página
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   if (selectedPost) {
     return (
       <div className="min-h-screen bg-[#f7f8fc]">
         <Header />
-        <PostView 
-          post={selectedPost} 
-          onBack={() => setSelectedPost(null)} 
+        <PostView
+          post={selectedPost}
+          onBack={() => setSelectedPost(null)}
         />
         <BlogFooter />
       </div>
     );
   }
-  
+
   return (
     <div className="min-h-screen bg-[#f7f8fc]">
       <Header />
       <HeroSection />
-      
+
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Contenido principal */}
           <div className="lg:col-span-3">
-            {/* Artículo destacado */}
-            {featuredPost && (
+            {/* Artículo destacado (solo se muestra en la primera página) */}
+            {currentPage === 1 && featuredPost && (
               <div onClick={() => setSelectedPost(featuredPost)} className="cursor-pointer">
                 <FeaturedPost post={featuredPost} />
               </div>
             )}
-            
-            {/* Entradas recientes */}
+
+            {/* Entradas recientes (ahora paginadas) */}
             <div>
               <h2 className="font-['Barlow:SemiBold',_sans-serif] text-2xl text-[#0d4676] mb-6">Entradas Recientes</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {recentPosts.map((post: BlogPost) => ( // Definido el tipo para 'post'
+                {currentPaginatedPosts.map((post: BlogPost) => ( // Usamos currentPaginatedPosts aquí
                   <div key={post.id} onClick={() => setSelectedPost(post)} className="cursor-pointer">
                     <PostCard post={post} />
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* Paginador */}
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </div>
-          
+
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <BlogSidebar />
           </div>
         </div>
       </main>
-      
+
       <BlogFooter />
     </div>
   );
