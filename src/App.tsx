@@ -5,8 +5,8 @@ import qxmLogoFooter from "./assets/logo_footer.svg"
 
 // Importaciones de iconos de Lucide React
 import {
-  Calendar, Clock, Eye, Heart, Share2, ArrowLeft,
-  TrendingUp, User, MessageCircle, ChevronRight, ThumbsUp,
+  Share2, ArrowLeft,
+  TrendingUp, User, MessageCircle, ChevronRight,
 } from "lucide-react";
 
 
@@ -21,10 +21,6 @@ interface BlogPost {
   excerpt: string;
   content: string;
   author: string;
-  date: string; // Considera usar `Date` si vas a manipular fechas, pero `string` es válido para mostrar.
-  readTime: string;
-  views: number;
-  likes: number;
   category: string;
   image: string;
   featured?: boolean; // `?` indica que es opcional
@@ -59,10 +55,6 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
       <p>Usando QXM puedes acceder a profesionales verificados y obtener presupuestos de manera rápida y segura.</p>
     `,
     author: "María González",
-    date: "2024-01-15",
-    readTime: "8 min",
-    views: 2840,
-    likes: 127,
     category: "Consejos",
     image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=400&fit=crop",
     featured: true
@@ -81,10 +73,6 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
       <p>Revisa las cañerías y grifos regularmente para detectar fugas temprano.</p>
     `,
     author: "Carlos Ruiz",
-    date: "2024-01-12",
-    readTime: "12 min",
-    views: 1950,
-    likes: 89,
     category: "Mantenimiento",
     image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=400&fit=crop"
   },
@@ -102,10 +90,6 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
       <p>Materiales ecológicos y sistemas de ahorro de agua están en auge.</p>
     `,
     author: "Ana Martínez",
-    date: "2024-01-10",
-    readTime: "6 min",
-    views: 3200,
-    likes: 156,
     category: "Reformas",
     image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=400&fit=crop"
   },
@@ -115,10 +99,6 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
     excerpt: "Cómo crear y mantener un jardín en espacios reducidos urbanos.",
     content: "",
     author: "Luis Fernández",
-    date: "2024-01-08",
-    readTime: "5 min",
-    views: 1680,
-    likes: 94,
     category: "Jardinería",
     image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=400&fit-crop"
   },
@@ -128,10 +108,6 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
     excerpt: "Guía esencial sobre seguridad eléctrica en el hogar y cuándo llamar a un profesional.",
     content: "",
     author: "Roberto Silva",
-    date: "2024-01-05",
-    readTime: "10 min",
-    views: 2100,
-    likes: 78,
     category: "Electricidad",
     image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&h=400&fit-crop"
   }
@@ -179,7 +155,7 @@ function HeroSection() {
 // Post destacado con estilo QXM
 function FeaturedPost({ post }: { post: BlogPost }) { // Definido el tipo para 'post'
   return (
-    <div className="bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(0,0,0,0.3),0px_1px_3px_1px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden mb-8">
+    <div className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)] overflow-hidden mb-8">
       <div className="md:flex">
         <div className="md:w-1/2">
           <div className="h-64 md:h-full relative">
@@ -201,16 +177,6 @@ function FeaturedPost({ post }: { post: BlogPost }) { // Definido el tipo para '
             <span className="bg-[#e2f1ff] text-[#0095ff] px-3 py-1 rounded-2xl font-['Barlow:Medium',_sans-serif] text-sm">
               {post.category}
             </span>
-            <div className="flex items-center text-[#7d8491] font-['Barlow:Regular',_sans-serif] text-sm gap-4">
-              <span className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                {new Date(post.date).toLocaleDateString('es-ES')}
-              </span>
-              <span className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
-                {post.readTime}
-              </span>
-            </div>
           </div>
           
           <h2 className="font-['Barlow:SemiBold',_sans-serif] text-2xl text-[#0d4676] mb-4 leading-tight">
@@ -228,16 +194,6 @@ function FeaturedPost({ post }: { post: BlogPost }) { // Definido el tipo para '
               </div>
               <div>
                 <p className="font-['Barlow:Medium',_sans-serif] text-[#0d4676]">{post.author}</p>
-                <div className="flex items-center text-[#7d8491] font-['Barlow:Regular',_sans-serif] text-sm gap-3">
-                  <span className="flex items-center gap-1">
-                    <Eye className="w-4 h-4" />
-                    {post.views.toLocaleString()}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Heart className="w-4 h-4" />
-                    {post.likes}
-                  </span>
-                </div>
               </div>
             </div>
             
@@ -255,7 +211,7 @@ function FeaturedPost({ post }: { post: BlogPost }) { // Definido el tipo para '
 // Card de post con estilo QXM
 function PostCard({ post }: { post: BlogPost }) { // Definido el tipo para 'post'
   return (
-    <div className="bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(0,0,0,0.3),0px_1px_3px_1px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden h-full hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)]  overflow-hidden h-full hover:shadow-lg transition-shadow">
       <div className="relative">
         <div className="h-48">
           <ImageWithFallback
@@ -272,16 +228,6 @@ function PostCard({ post }: { post: BlogPost }) { // Definido el tipo para 'post
       </div>
       
       <div className="p-4">
-        <div className="flex items-center gap-3 mb-2 font-['Barlow:Regular',_sans-serif] text-xs text-[#7d8491]">
-          <span className="flex items-center gap-1">
-            <Calendar className="w-3 h-3" />
-            {new Date(post.date).toLocaleDateString('es-ES')}
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
-            {post.readTime}
-          </span>
-        </div>
         
         <h3 className="font-['Barlow:SemiBold',_sans-serif] text-lg text-[#0d4676] mb-2 leading-tight">
           {post.title}
@@ -299,16 +245,6 @@ function PostCard({ post }: { post: BlogPost }) { // Definido el tipo para 'post
             <span className="font-['Barlow:Regular',_sans-serif] text-sm text-[#5c6474]">{post.author}</span>
           </div>
           
-          <div className="flex items-center gap-3 font-['Barlow:Regular',_sans-serif] text-sm text-[#7d8491]">
-            <span className="flex items-center gap-1">
-              <Eye className="w-4 h-4" />
-              {post.views.toLocaleString()}
-            </span>
-            <span className="flex items-center gap-1">
-              <Heart className="w-4 h-4" />
-              {post.likes}
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -317,12 +253,12 @@ function PostCard({ post }: { post: BlogPost }) { // Definido el tipo para 'post
 
 // Sidebar con estilo QXM
 function BlogSidebar() {
-  const popularPosts: BlogPost[] = blogPosts.slice(0, 5).sort((a, b) => b.views - a.views); // Definido el tipo
+  const popularPosts: BlogPost[] = blogPosts.slice(0, 5); // Definido el tipo
   
   return (
     <div className="space-y-6">
       {/* Categorías */}
-      <div className="bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(0,0,0,0.3),0px_1px_3px_1px_rgba(0,0,0,0.15)] border border-gray-100">
+      <div className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)] ">
         <div className="px-4 py-4 border-b border-gray-100">
           <h3 className="font-['Barlow:SemiBold',_sans-serif] text-lg text-[#0d4676]">Categorías</h3>
         </div>
@@ -344,7 +280,7 @@ function BlogSidebar() {
       </div>
       
       {/* Posts más leídos */}
-      <div className="bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(0,0,0,0.3),0px_1px_3px_1px_rgba(0,0,0,0.15)] border border-gray-100">
+      <div className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)]">
         <div className="px-4 py-4 border-b border-gray-100">
           <h3 className="font-['Barlow:SemiBold',_sans-serif] text-lg text-[#0d4676] flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-[#0095ff]" />
@@ -362,10 +298,6 @@ function BlogSidebar() {
                   <h4 className="font-['Barlow:Medium',_sans-serif] text-sm text-[#0d4676] mb-1 group-hover:text-[#0095ff] transition-colors line-clamp-2">
                     {post.title}
                   </h4>
-                  <div className="flex items-center gap-2 font-['Barlow:Regular',_sans-serif] text-xs text-[#7d8491]">
-                    <Eye className="w-3 h-3" />
-                    {post.views.toLocaleString()}
-                  </div>
                 </div>
               </div>
             ))}
@@ -426,7 +358,6 @@ function PostView({ post, onBack }: { post: BlogPost; onBack: () => void }) { //
               <span className="bg-[#0095ff] px-3 py-1 rounded-2xl font-['Barlow:Medium',_sans-serif] text-sm">
                 {post.category}
               </span>
-              <span className="font-['Barlow:Regular',_sans-serif] text-sm opacity-90">{post.readTime} de lectura</span>
             </div>
             <h1 className="font-['Comfortaa:Bold',_sans-serif] text-3xl md:text-4xl mb-4">{post.title}</h1>
           </div>
@@ -440,25 +371,10 @@ function PostView({ post, onBack }: { post: BlogPost; onBack: () => void }) { //
               </div>
               <div>
                 <p className="font-['Barlow:SemiBold',_sans-serif] text-[#0d4676]">{post.author}</p>
-                <p className="font-['Barlow:Regular',_sans-serif] text-[#7d8491] text-sm">
-                  {new Date(post.date).toLocaleDateString('es-ES', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}
-                </p>
               </div>
             </div>
             
             <div className="flex items-center gap-4 text-[#7d8491]">
-              <span className="flex items-center gap-1 font-['Barlow:Regular',_sans-serif]">
-                <Eye className="w-4 h-4" />
-                {post.views.toLocaleString()}
-              </span>
-              <button className="flex items-center gap-1 hover:text-red-500 transition-colors font-['Barlow:Regular',_sans-serif]">
-                <Heart className="w-4 h-4" />
-                {post.likes}
-              </button>
               <button className="flex items-center gap-1 hover:text-[#0095ff] transition-colors font-['Barlow:Regular',_sans-serif]">
                 <Share2 className="w-4 h-4" />
                 Compartir
@@ -473,10 +389,6 @@ function PostView({ post, onBack }: { post: BlogPost; onBack: () => void }) { //
           <div className="mt-8 pt-6 border-t border-gray-100">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <button className="flex items-center gap-2 bg-[#e2f1ff] text-[#0095ff] px-4 py-2 rounded-lg font-['Barlow:Medium',_sans-serif] hover:bg-[#d1e9ff] transition-colors">
-                  <ThumbsUp className="w-4 h-4" />
-                  Me gusta ({post.likes})
-                </button>
                 <button className="flex items-center gap-2 text-[#7d8491] hover:text-[#0095ff] transition-colors px-4 py-2 rounded-lg hover:bg-[#f7f8fc] font-['Barlow:Medium',_sans-serif]">
                   <MessageCircle className="w-4 h-4" />
                   Comentarios (12)
