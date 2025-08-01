@@ -150,7 +150,7 @@ const categories: Category[] = [ // Aplicamos el tipo Category[]
 // Hero Section con estilo QXM
 function HeroSection() {
   return (
-    <div className="bg-[#0065b3] text-white py-16 relative overflow-hidden"> 
+    <div className="bg-[#0065b3] text-white py-16 relative overflow-hidden pt-[130px]"> 
       {/* Elementos decorativos de fondo usando svgPaths */}
       <div className="absolute top-0 left-0 w-32 h-32 opacity-20">
         <svg viewBox="0 0 129 81" fill="none" className="w-full h-full">
@@ -163,7 +163,7 @@ function HeroSection() {
         </svg>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 text-center relative ">
+      <div className="max-w-7xl mx-auto px-4 text-center relative">
         <h1 className="font-['Comfortaa:Bold',_sans-serif] text-4xl md:text-5xl mb-4">Blog QXM</h1>
         <p className="font-['Barlow:Regular',_sans-serif] text-xl text-blue-100 mb-6 max-w-3xl mx-auto">
           Descubre consejos expertos, guías prácticas y las mejores soluciones para tu hogar
@@ -506,48 +506,21 @@ function PostView({ post, onBack }: { post: BlogPost; onBack: () => void }) { //
 // Footer QXM
 function BlogFooter() {
   return (
-    <footer className="bg-[#0d4676] text-white mt-16">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <img src={qxmLogoFooter} alt="QXM Logo Footer" className="h-[35px] w-auto object-contain" />
-             
-            </div>
-            <p className="font-['Barlow:Regular',_sans-serif] text-blue-100 text-sm leading-relaxed max-w-md">
-              Tu fuente confiable para consejos expertos, guías prácticas y las mejores soluciones para mantener tu hogar en perfectas condiciones.
-            </p>
+    <footer className="bg-[#0d4676] mt-16">
+      <div className="px-0 py-20">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between gap-8">
+          <div className="flex items-center gap-3 mb-6 md:mb-0">
+            <img src={qxmLogoFooter} alt="QXM Logo Footer" className="h-[38px] w-auto object-contain" />
           </div>
           
           <div>
-            <h6 className="font-['Barlow:SemiBold',_sans-serif] mb-4">Enlaces</h6>
-            <ul className="space-y-2 font-['Barlow:Regular',_sans-serif] text-sm text-blue-100">
-              <li><a href="#" className="hover:text-white transition-colors">Inicio</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Categorías</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Guías</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Sobre QXM</a></li>
+            <ul className="space-y-3 font-['Barlow:Regular',_sans-serif] text-sm text-blue-100 text-right">
+              <li><a href="#" className="hover:text-white transition-colors">Términos y condiciones</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Politicas de privacidad</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Condiciones de uso</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Politica de igualdad, diversidad y gobernanza</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Contactanos</a></li>
             </ul>
-          </div>
-          
-          <div>
-            <h6 className="font-['Barlow:SemiBold',_sans-serif] mb-4">Categorías</h6>
-            <ul className="space-y-2 font-['Barlow:Regular',_sans-serif] text-sm text-blue-100">
-              <li><a href="#" className="hover:text-white transition-colors">Consejos</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Mantenimiento</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Reformas</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Jardinería</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div className="border-t border-blue-500/30 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex flex-col md:flex-row gap-4 text-sm font-['Barlow:Regular',_sans-serif] text-blue-100">
-            <span>Versión 2.3.1</span>
-            <span>Powered by Quien X Mi S.A</span>
-          </div>
-          <div className="flex gap-4 text-sm font-['Barlow:Regular',_sans-serif] text-blue-100 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Términos y condiciones</a>
-            <a href="#" className="hover:text-white transition-colors">Políticas de privacidad</a>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
-//Este es mi componente Header.tsx
 import React, { useState } from 'react';
-import qxmLogo from '../assets/logo.svg'; // Asegúrate que esta ruta sea correcta para tu logo
+import qxmLogo from '../assets/logo.svg'; 
 
 
 const Header: React.FC = () => {
@@ -8,7 +7,7 @@ const Header: React.FC = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false); // Para el selector de idioma
 
   return (
-    <header className="bg-white shadow-sm py-6 px-4 flex justify-around relative z-10"> {/* Añadido z-10 para el menú mobile */}
+    <header className="bg-white shadow-sm py-6 px-4 flex justify-around fixed top-0 left-0 w-full z-10"> {/* Añadido z-10 para el menú mobile */}
       {/* Sección del Logo */}
       <div className="flex items-center">
         {/* logo de QXM */}
@@ -73,7 +72,7 @@ const Header: React.FC = () => {
 
       {/* Menú Mobile Desplegable */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 flex flex-col items-center space-y-4 z-10"> {/* top-full para que aparezca justo debajo del header */}
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 flex flex-col items-center space-y-4 z-30"> {/* top-full para que aparezca justo debajo del header */}
           <a href="#que-es" className="text-gray-800 hover:text-blue-600 text-lg">¿Qué es Qxm?</a>
           <a href="#trabajadores" className="text-gray-800 hover:text-blue-600 text-lg">Trabajadores</a>
           <a href="#gobiernos" className="text-gray-800 hover:text-blue-600 text-lg">Gobiernos</a>
