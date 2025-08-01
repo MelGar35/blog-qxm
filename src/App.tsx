@@ -38,21 +38,90 @@ interface Category {
 const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
   {
     id: 1,
-    title: "Cómo Encontrar el Mejor Profesional para tu Hogar en 2024",
-    excerpt: "Descubre las claves para contratar servicios de calidad y evitar problemas comunes al buscar profesionales.",
+    title: "5 problemas comunes en casa cuando empieza el frío (y a quién podés llamar para solucionarlos)",
+    excerpt: "Con la llegada del invierno, muchas casas empiezan a mostrar fallas que no se notaban durante el verano. Acá te contamos cuáles son los problemas más comunes en los hogares argentinos durante el invierno, cómo afectan tu bienestar y quién puede ayudarte a solucionarlos de forma rápida y segura.", // Resumen más completo
     content: `
-      <p>Encontrar profesionales confiables para tu hogar puede ser un desafío. En esta guía te enseñamos cómo hacerlo de manera efectiva.</p>
-      
-      <h3>1. Verifica las Credenciales</h3>
-      <p>Siempre revisa que el profesional tenga las certificaciones necesarias y experiencia comprobable en el área.</p>
-      
-      <h3>2. Lee las Reseñas</h3>
-      <p>Las opiniones de otros clientes son fundamentales para tomar una decisión informada.</p>
-      
-      <h3>3. Solicita Múltiples Presupuestos</h3>
-      <p>Compara precios y servicios de diferentes profesionales antes de decidir.</p>
-      
-      <p>Usando QXM puedes acceder a profesionales verificados y obtener presupuestos de manera rápida y segura.</p>
+      <p>Con la llegada del invierno, muchas casas empiezan a mostrar fallas que no se notaban durante el verano. El frío, la humedad y el mayor uso de artefactos generan situaciones que, si no se resuelven a tiempo, pueden convertirse en complicaciones más grandes (y caras).</p>
+      <p>Acá te contamos cuáles son los problemas más comunes en los hogares argentinos durante el invierno, cómo afectan tu bienestar y quién puede ayudarte a solucionarlos de forma rápida y segura.</p>
+
+      <h3>1. Humedad en techos y paredes</h3>
+      <p>El contraste entre el frío exterior y el calor interior genera humedad por condensación. A eso se suman filtraciones por lluvia o malas terminaciones que provocan manchas, hongos y mal olor.</p>
+      <h4>¿Por qué es un problema?</h4>
+      <ul>
+        <li>Daña la pintura y la estructura de la casa.</li>
+        <li>Afecta la salud respiratoria.</li>
+        <li>Empeora con el tiempo si no se trata.</li>
+      </ul>
+      <h4>¿Quién puede ayudarte?</h4>
+      <ul>
+        <li>Un pintor profesional puede aplicar pintura antihumedad o membrana líquida.</li>
+        <li>Un albañil puede revisar y reparar grietas o filtraciones.</li>
+      </ul>
+      <p>👉 Solucionarlo a tiempo evita que la humedad se propague a más ambientes. </p>
+      <p>👉 <a href="https://www.qxm.com.ar/pedido/nuevo" target="_blank" rel="noopener noreferrer"><span class="text-blue-500 font-bold">Solicitá un presupuesto acá</span></a></p>
+
+      <h3>2. Estufas y calefactores que no prenden o no calientan bien</h3>
+      <p>Al empezar a usarlos después de meses apagados, muchos calefactores no funcionan correctamente: no encienden, hacen ruido, largan olor a gas o simplemente no calientan lo suficiente.</p>
+      <h4>¿Por qué es un problema?</h4>
+      <ul>
+        <li>Aumenta el consumo sin mejorar el confort.</li>
+        <li>Puede ser peligroso si hay pérdidas o mal funcionamiento.</li>
+      </ul>
+      <h4>¿Quién puede ayudarte?</h4>
+      <ul>
+        <li>Un gasista matriculado puede hacer el mantenimiento o la instalación de una nueva estufa.</li>
+        <li>Un técnico en calefacción puede limpiar y revisar la salida de gases.</li>
+      </ul>
+      <p>👉 ¡No esperes al primer día de mucho frío para darte cuenta!</p>
+
+      <h3>3. Cortes de luz al usar varios artefactos</h3>
+      <p>Con la calefacción eléctrica, caloventores, secadores, hervidores y otros aparatos funcionando al mismo tiempo, muchas casas experimentan cortes o sobrecargas.</p>
+      <h4>¿Por qué es un problema?</h4>
+      <ul>
+        <li>Podés dañar electrodomésticos.</li>
+        <li>Puede representar un riesgo de incendio.</li>
+      </ul>
+      <h4>¿Quién puede ayudarte?</h4>
+      <ul>
+        <li>Un electricista puede revisar la carga total, actualizar la instalación, cambiar térmicas o dividir los circuitos para evitar sobrecargas.</li>
+      </ul>
+      <p>👉 Si tenés una casa antigua o estás usando más artefactos que antes, hacé una revisión general. </p>
+      <p>👉 <a href="#">Pedí ayuda para tu casa acá</a></p>
+
+      <h3>4. Termotanque o calefón con poca presión o sin agua caliente</h3>
+      <p>Con más duchas calientes y mayor demanda de agua caliente, los problemas se notan rápido: demora en calentar, baja presión o cortes intermitentes.</p>
+      <h4>¿Por qué es un problema?</h4>
+      <ul>
+        <li>No sólo es incómodo, también puede esconder problemas como sarro, obstrucciones o pérdidas de gas.</li>
+      </ul>
+      <h4>¿Quién puede ayudarte?</h4>
+      <ul>
+        <li>Un técnico de gas o plomero puede limpiar el termotanque, revisar la válvula de seguridad o reemplazarlo si es necesario.</li>
+      </ul>
+      <p>👉 El mantenimiento regular alarga la vida útil del equipo y mejora el rendimiento.</p>
+
+      <h3>5. Ingreso de aire frío por puertas y ventanas</h3>
+      <p>Aunque no lo veas, por debajo de las puertas, por los costados de las ventanas o en marcos mal ajustados, se pierde mucho calor.</p>
+      <h4>¿Por qué es un problema?</h4>
+      <ul>
+        <li>Aumenta el gasto en calefacción.</li>
+        <li>El frío constante genera incomodidad en todo el hogar.</li>
+      </ul>
+      <h4>¿Quién puede ayudarte?</h4>
+      <ul>
+        <li>Un carpintero puede ajustar o sellar puertas y ventanas.</li>
+        <li>También podés pedir ayuda a alguien especializado en pequeños arreglos del hogar para colocar burletes o sellos de goma.</li>
+      </ul>
+      <p>👉 Un cierre hermético puede hacer una gran diferencia en el confort y el gasto.</p>
+
+      <h3>🛠️ ¿Necesitás ayuda con alguno de estos problemas?</h3>
+      <p>En Quién por mí podés buscar trabajadores verificados por rubro, pedir presupuestos gratis y contratar a quien mejor se adapte a tu necesidad y tu presupuesto.</p>
+      <ul>
+        <li>✅ Sin vueltas</li>
+        <li>✅ Cerca tuyo</li>
+        <li>✅ Con opiniones de otros usuarios</li>
+      </ul>
+      <p>👉 <a href="#">Pedí ayuda para tu casa acá</a></p>
     `,
     author: "María González",
     category: "Consejos",
@@ -336,7 +405,7 @@ function BlogSidebar() {
 // Vista de post individual
 function PostView({ post, onBack }: { post: BlogPost; onBack: () => void }) { // Definidos los tipos para 'post' y 'onBack'
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-8 pt-[130px]">
       <button 
         onClick={onBack}
         className="flex items-center gap-2 text-[#7d8491] hover:text-[#0095ff] transition-colors mb-6 px-3 py-2 rounded-lg hover:bg-[#f7f8fc] font-['Barlow:Medium',_sans-serif]"
@@ -345,7 +414,7 @@ function PostView({ post, onBack }: { post: BlogPost; onBack: () => void }) { //
         Volver al blog
       </button>
       
-      <article className="bg-white rounded-lg shadow-[0px_1px_2px_0px_rgba(0,0,0,0.3),0px_1px_3px_1px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden">
+      <article className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
         <div className="relative h-96">
           <ImageWithFallback
             src={post.image}
@@ -388,13 +457,6 @@ function PostView({ post, onBack }: { post: BlogPost; onBack: () => void }) { //
           
           <div className="mt-8 pt-6 border-t border-gray-100">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <button className="flex items-center gap-2 text-[#7d8491] hover:text-[#0095ff] transition-colors px-4 py-2 rounded-lg hover:bg-[#f7f8fc] font-['Barlow:Medium',_sans-serif]">
-                  <MessageCircle className="w-4 h-4" />
-                  Comentarios (12)
-                </button>
-              </div>
-              
               <div className="flex items-center gap-2">
                 <span className="font-['Barlow:Regular',_sans-serif] text-sm text-[#7d8491]">Compartir:</span>
                 <button className="w-8 h-8 bg-[#e2f1ff] text-[#0095ff] rounded-lg hover:bg-[#d1e9ff] transition-colors flex items-center justify-center">
