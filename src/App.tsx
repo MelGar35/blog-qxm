@@ -506,14 +506,14 @@ function PostView({ post, onBack }: { post: BlogPost; onBack: () => void }) { //
 function BlogFooter() {
   return (
     <footer className="bg-[#0d4676] mt-16">
-      <div className="px-0 py-20">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between gap-8">
+      <div className="py-20"> {/* Elimina px-0, lo manejaremos en el div interno */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 flex flex-col md:flex-row items-start justify-between gap-8"> {/* <-- CAMBIADO AQUÍ */}
           <div className="flex items-center gap-3 mb-6 md:mb-0">
             <img src={qxmLogoFooter} alt="QXM Logo Footer" className="h-[38px] w-auto object-contain" />
           </div>
-          
+
           <div>
-            <ul className="space-y-3 font-['Barlow:Regular',_sans-serif] text-sm text-blue-100 text-right">
+            <ul className="space-y-3 font-['Barlow:Regular',_sans-serif] text-md text-[#d5d4ed] text-right">
               <li><a href="#" className="hover:text-white transition-colors">Términos y condiciones</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Politicas de privacidad</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Condiciones de uso</a></li>
@@ -526,6 +526,7 @@ function BlogFooter() {
     </footer>
   );
 }
+
 
 export default function App() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
