@@ -15,7 +15,6 @@ import svgPaths from "./imports/svg-xxvk0ukngx";
 
 
 // --- INTERFACES DE TIPOS ---
-// Define la estructura de un post del blog
 interface BlogPost {
   id: number;
   title: string;
@@ -33,7 +32,6 @@ interface Category {
   count: number;
   color: string;
 }
-
 
 // Datos de ejemplo para el blog adaptado a QXM
 const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
@@ -346,9 +344,9 @@ function PostCard({ post }: { post: BlogPost }) { // Definido el tipo para 'post
 }
 
 // Sidebar con estilo QXM
-function BlogSidebar() {
-  const popularPosts: BlogPost[] = blogPosts.slice(0, 5); // Definido el tipo
-  
+function BlogSidebar({ onCategorySelect, selectedCategory }: { onCategorySelect: (categoryName: string | null) => void; selectedCategory: string | null }) {
+  const popularPosts: BlogPost[] = blogPosts.slice(0, 5); // `blogPosts` debe ser accesible aquí o pasado como prop
+
   return (
     <div className="space-y-6">
       {/* Categorías */}
@@ -358,14 +356,38 @@ function BlogSidebar() {
         </div>
         <div className="p-4">
           <div className="space-y-2">
-            {categories.map((category: Category, index: number) => ( // Definido el tipo para 'category' y 'index'
-              <div key={index} className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f7f8fc] transition-colors cursor-pointer">
+            {/* Botón "Todas las categorías" */}
+            <div
+              onClick={() => onCategorySelect(null)}
+              className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#f7f8fc] transition-colors cursor-pointer
+                ${selectedCategory === null ? 'bg-[#e2f1ff] text-[#0095ff]' : ''}
+              `}
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                <span className="font-['Barlow:Medium',_sans-serif]">Todas las categorías</span>
+              </div>
+              <span className="bg-[#ebedf2] text-[#7d8491] px-2 py-1 rounded-full font-['Barlow:Regular',_sans-serif] text-xs">
+                {/* Muestra el total de todos los posts disponibles */}
+                {blogPosts.length} {/* <--- ESTA LÍNEA ESTABA BIEN PARA "TODAS" */}
+              </span>
+            </div>
+
+            {categories.map((category: Category, index: number) => (
+              <div
+                key={index}
+                onClick={() => onCategorySelect(category.name)}
+                className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#f7f8fc] transition-colors cursor-pointer
+                  ${selectedCategory === category.name ? 'bg-[#e2f1ff] text-[#0095ff]' : ''}
+                `}
+              >
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }}></div>
                   <span className="font-['Barlow:Medium',_sans-serif] text-[#5c6474]">{category.name}</span>
                 </div>
                 <span className="bg-[#ebedf2] text-[#7d8491] px-2 py-1 rounded-full font-['Barlow:Regular',_sans-serif] text-xs">
-                  {category.count}
+                  {/* <--- MODIFICA ESTA LÍNEA */}
+                  {blogPosts.filter(post => post.category === category.name).length}
                 </span>
               </div>
             ))}
@@ -528,27 +550,46 @@ function BlogFooter() {
 }
 
 
+// Componente principal
 export default function App() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
-  const [currentPage, setCurrentPage] = useState(1); // Estado para la página actual
+  const [currentPage, setCurrentPage] = useState(1);
+  // Nuevo estado para la categoría seleccionada: null significa "Todas"
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
   const postsPerPage = 2; // Cantidad de notas por página (excluyendo el destacado)
 
-  const featuredPost: BlogPost | undefined = blogPosts.find(post => post.featured);
-  const otherPosts: BlogPost[] = blogPosts.filter(post => !post.featured);
+  // Primero, filtra los posts basándose en la categoría seleccionada
+  const filteredPosts = selectedCategory
+    ? blogPosts.filter(post => post.category === selectedCategory)
+    : blogPosts;
 
-  // Lógica para obtener los posts a mostrar en la página actual
+  // Luego, separa el post destacado (si aplica) del resto de los posts filtrados
+  const featuredPost: BlogPost | undefined = filteredPosts.find(post => post.featured);
+  // Los 'otherPosts' son ahora los posts filtrados, excluyendo el destacado si está presente
+  const otherPosts: BlogPost[] = filteredPosts.filter(post => !post.featured);
+
+  // Lógica para obtener los posts a mostrar en la página actual para la categoría filtrada
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
   const currentPaginatedPosts = otherPosts.slice(startIndex, endIndex);
 
-  // Calcula el total de páginas para las "otras notas"
+  // Calcula el total de páginas para las "otras notas" de la categoría filtrada
   const totalPages = Math.ceil(otherPosts.length / postsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Opcional: Desplazarse al principio de la página después de cambiar de página
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Nueva función para manejar la selección de categoría
+  const handleCategorySelect = (categoryName: string | null) => {
+    setSelectedCategory(categoryName);
+    setCurrentPage(1); // Resetear a la primera página cuando se cambia de categoría
+    setSelectedPost(null); // Asegurarse de que no haya un post individual seleccionado
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Desplazar al inicio
+  };
+
 
   if (selectedPost) {
     return (
@@ -572,36 +613,50 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Contenido principal */}
           <div className="lg:col-span-3">
-            {/* Artículo destacado (solo se muestra en la primera página) */}
-            {currentPage === 1 && featuredPost && (
+            {/* Artículo destacado (solo se muestra en la primera página y si no hay categoría seleccionada o si el destacado pertenece a la categoría seleccionada) */}
+            {currentPage === 1 && featuredPost && (selectedCategory === null || featuredPost.category === selectedCategory) && (
               <div onClick={() => setSelectedPost(featuredPost)} className="cursor-pointer">
                 <FeaturedPost post={featuredPost} />
               </div>
             )}
+            {/* Mensaje si no hay posts para la categoría seleccionada (y no es la primera página con destacado) */}
+            {currentPaginatedPosts.length === 0 && (!featuredPost || currentPage !== 1) && (
+                <p className="text-gray-600 text-center py-10">No hay entradas disponibles para la categoría seleccionada.</p>
+            )}
 
-            {/* Entradas recientes (ahora paginadas) */}
-            <div>
-              <h2 className="font-['Barlow:SemiBold',_sans-serif] text-2xl text-[#0d4676] mb-6">Entradas Recientes</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {currentPaginatedPosts.map((post: BlogPost) => ( // Usamos currentPaginatedPosts aquí
-                  <div key={post.id} onClick={() => setSelectedPost(post)} className="cursor-pointer">
-                    <PostCard post={post} />
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Entradas recientes (ahora paginadas y filtradas por categoría) */}
+            {currentPaginatedPosts.length > 0 && (
+                <div>
+                    <h2 className="font-['Barlow:SemiBold',_sans-serif] text-2xl text-[#0d4676] mb-6">
+                        {selectedCategory ? `Notas de ${selectedCategory}` : 'Entradas Recientes'}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {currentPaginatedPosts.map((post: BlogPost) => (
+                            <div key={post.id} onClick={() => setSelectedPost(post)} className="cursor-pointer">
+                                <PostCard post={post} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
 
-            {/* Paginador */}
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
+
+            {/* Paginador (solo si hay más de una página de posts filtrados) */}
+            {totalPages > 1 && currentPaginatedPosts.length > 0 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            )}
           </div>
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <BlogSidebar />
+            <BlogSidebar
+              onCategorySelect={handleCategorySelect} // Pasamos la función al Sidebar
+              selectedCategory={selectedCategory} // Pasamos la categoría seleccionada al Sidebar
+            />
           </div>
         </div>
       </main>
