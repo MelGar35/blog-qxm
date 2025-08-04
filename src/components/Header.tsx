@@ -77,7 +77,7 @@ const Header: React.FC = () => {
           <a href="#trabajadores" className="text-gray-800 hover:text-blue-600 text-lg">Trabajadores</a>
           <a href="#gobiernos" className="text-gray-800 hover:text-blue-600 text-lg">Gobiernos</a>
           <a href="#iniciar-sesion" className="text-blue-600 hover:text-blue-700 text-lg">Iniciar sesión</a>
-          <a href="#registrate" className="bg-qxm-pink hover:bg-qxm-pink-dark text-white font-semibold py-2 px-6 rounded-full text-lg">
+          <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md text-lg shadow-md border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
             Regístrate
           </a>
           {/* Selector de idioma en mobile */}
