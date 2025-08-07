@@ -549,7 +549,6 @@ function BlogFooter() {
   );
 }
 
-
 // Componente principal
 export default function App() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
