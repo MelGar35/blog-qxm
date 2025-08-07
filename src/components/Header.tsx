@@ -61,13 +61,13 @@ const Header: React.FC = () => {
           className="text-qxm-blue focus:outline-none focus:text-qxm-blue">
           {isMobileMenuOpen ? (
             // Ícono de "cruz" cuando el menú está abierto
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-x">
               <path d="M18 6 6 18"/>
               <path d="m6 6 12 12"/>
             </svg>
           ) : (
             // Ícono de "texto alineado a la derecha" cuando el menú está cerrado
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-align-right">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-align-right">
               <line x1="21" x2="3" y1="6" y2="6"/>
               <line x1="21" x2="9" y1="12" y2="12"/>
               <line x1="21" x2="7" y1="18" y2="18"/>
