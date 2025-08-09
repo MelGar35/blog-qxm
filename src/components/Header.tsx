@@ -78,11 +78,11 @@ const Header: React.FC = () => {
       {/* Menú Mobile Desplegable */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-4 flex flex-col space-y-4 z-30">
-          <h6 className="text-gray-700 text-lg">Estas navegando en Qxm <br /><strong>Argentina</strong></h6>
-          <a href="#trabajadores" className="text-qxm-blue hover:text-qxm-pink text-lg">Trabajadores</a>
-          <a href="#gobiernos" className="text-qxm-blue hover:text-qxm-pink text-lg">Gobiernos</a>
-          <a href="#iniciar-sesion" className="text-qxm-blue hover:text-qxm-pink text-lg font-semibold">Iniciar sesión</a>
-          <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md shadow-md text-lg text-center border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
+          <h6 className="text-gray-700 text-medium">Estas navegando en Qxm <br /><strong>Argentina</strong></h6>
+          <a href="#trabajadores" className="text-qxm-blue hover:text-qxm-pink text-xl">Trabajadores</a>
+          <a href="#gobiernos" className="text-qxm-blue hover:text-qxm-pink text-xl">Gobiernos</a>
+          <a href="#iniciar-sesion" className="text-qxm-blue hover:text-qxm-pink text-xl font-semibold">Iniciar sesión</a>
+          <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md shadow-md text-xl text-center border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
             Regístrate
           </a>
           <div className="relative w-full text-center">
