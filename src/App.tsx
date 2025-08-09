@@ -3,6 +3,7 @@ import { ImageWithFallback } from './components/figma/ImageWithFallback';
 import Header from "./components/Header";
 import qxmLogoFooter from "./assets/logo_footer.svg"
 import Pagination from './components/Pagination';
+import { ChevronDown } from 'lucide-react'; //comp Sidebar
 
 // Importaciones de iconos de Lucide React
 import {
@@ -345,52 +346,74 @@ function PostCard({ post }: { post: BlogPost }) { // Definido el tipo para 'post
 
 // Sidebar con estilo QXM
 function BlogSidebar({ onCategorySelect, selectedCategory }: { onCategorySelect: (categoryName: string | null) => void; selectedCategory: string | null }) {
-  const popularPosts: BlogPost[] = blogPosts.slice(0, 5); // `blogPosts` debe ser accesible aquí o pasado como prop
+  const popularPosts: BlogPost[] = blogPosts.slice(0, 5);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleSelectAndClose = (categoryName: string | null) => {
+    onCategorySelect(categoryName);
+    setIsDropdownOpen(false); // Cierra el dropdown al seleccionar
+  };
 
   return (
     <div className="space-y-6">
-      {/* Categorías */}
-      <div className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)] ">
-        <div className="px-4 py-4 border-b border-gray-100">
-          <h3 className="font-['Barlow:SemiBold',_sans-serif] text-lg text-[#0d4676]">Categorías</h3>
+      {/* Categorías (Dropdown para mobile, lista para desktop) */}
+      <div className="bg-white rounded-lg shadow-[0px_1px_3px_1px_rgba(0,0,0,0.05)]">
+        {/* Este div será el botón del dropdown en mobile */}
+        <div 
+          className="flex items-center justify-between p-4 border-b border-gray-100 md:hidden cursor-pointer"
+          onClick={toggleDropdown}
+        >
+          <h3 className="font-['Barlow:SemiBold',_sans-serif] text-lg text-[#0d4676]">
+            Categorías
+          </h3>
+          <ChevronDown className={`w-5 h-5 text-[#0d4676] transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
         </div>
-        <div className="p-4">
-          <div className="space-y-2">
-            {/* Botón "Todas las categorías" */}
-            <div
-              onClick={() => onCategorySelect(null)}
-              className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#f7f8fc] transition-colors cursor-pointer
-                ${selectedCategory === null ? 'bg-[#e2f1ff] text-[#0095ff]' : ''}
-              `}
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-gray-400"></div>
-                <span className="font-['Barlow:Medium',_sans-serif]">Todas las categorías</span>
-              </div>
-              <span className="bg-[#ebedf2] text-[#7d8491] px-2 py-1 rounded-full font-['Barlow:Regular',_sans-serif] text-xs">
-                {/* Muestra el total de todos los posts disponibles */}
-                {blogPosts.length} {/* <--- ESTA LÍNEA ESTABA BIEN PARA "TODAS" */}
-              </span>
-            </div>
 
-            {categories.map((category: Category, index: number) => (
+        {/* Contenido del dropdown - visible en mobile si está abierto, siempre en desktop */}
+        <div className={`${isDropdownOpen ? 'block' : 'hidden'} md:block`}>
+          <div className="px-4 py-4 hidden md:block border-b border-gray-100">
+            <h3 className="font-['Barlow:SemiBold',_sans-serif] text-lg text-[#0d4676]">Categorías</h3>
+          </div>
+          <div className="p-4">
+            <div className="space-y-2">
+              {/* Botón "Todas las categorías" */}
               <div
-                key={index}
-                onClick={() => onCategorySelect(category.name)}
+                onClick={() => handleSelectAndClose(null)}
                 className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#f7f8fc] transition-colors cursor-pointer
-                  ${selectedCategory === category.name ? 'bg-[#e2f1ff] text-[#0095ff]' : ''}
+                  ${selectedCategory === null ? 'bg-[#e2f1ff] text-[#0095ff]' : ''}
                 `}
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }}></div>
-                  <span className="font-['Barlow:Medium',_sans-serif] text-[#5c6474]">{category.name}</span>
+                  <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                  <span className="font-['Barlow:Medium',_sans-serif]">Todas las categorías</span>
                 </div>
                 <span className="bg-[#ebedf2] text-[#7d8491] px-2 py-1 rounded-full font-['Barlow:Regular',_sans-serif] text-xs">
-                  {/* <--- MODIFICA ESTA LÍNEA */}
-                  {blogPosts.filter(post => post.category === category.name).length}
+                  {blogPosts.length}
                 </span>
               </div>
-            ))}
+
+              {categories.map((category: Category, index: number) => (
+                <div
+                  key={index}
+                  onClick={() => handleSelectAndClose(category.name)}
+                  className={`flex items-center justify-between p-3 rounded-lg hover:bg-[#f7f8fc] transition-colors cursor-pointer
+                    ${selectedCategory === category.name ? 'bg-[#e2f1ff] text-[#0095ff]' : ''}
+                  `}
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }}></div>
+                    <span className="font-['Barlow:Medium',_sans-serif] text-[#5c6474]">{category.name}</span>
+                  </div>
+                  <span className="bg-[#ebedf2] text-[#7d8491] px-2 py-1 rounded-full font-['Barlow:Regular',_sans-serif] text-xs">
+                    {blogPosts.filter(post => post.category === category.name).length}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -555,6 +578,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(1);
   // Nuevo estado para la categoría seleccionada: null significa "Todas"
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  
 
   const postsPerPage = 2; // Cantidad de notas por página (excluyendo el destacado)
 
