@@ -37,7 +37,7 @@ interface Category {
 }
 
 // Datos de ejemplo para el blog adaptado a QXM
-const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
+const blogPosts: BlogPost[] = [
   {
     id: 1,
     title: "5 problemas comunes en casa cuando empieza el frío (y a quién podés llamar para solucionarlos)",
@@ -488,7 +488,7 @@ function BlogSidebar({ onCategorySelect, selectedCategory }: { onCategorySelect:
         </div>
       </div>
       
-      {/* Newsletter QXM */}
+      {/* Newsletter QXM VER QUE HACEMOS CON ESTA SECCION
       <div className="bg-[#0095ff] text-white rounded-lg overflow-hidden relative">
         <div className="absolute top-0 right-0 w-20 h-20 opacity-20">
           <svg viewBox="0 0 129 81" fill="none" className="w-full h-full">
@@ -511,7 +511,7 @@ function BlogSidebar({ onCategorySelect, selectedCategory }: { onCategorySelect:
             </button>
           </div>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }
