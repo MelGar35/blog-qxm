@@ -19,13 +19,13 @@ const Header: React.FC = () => {
         {/* Menú de Navegación (Desktop) y Botones */}
         <div className="hidden md:flex items-center">
           <nav className="flex space-x-6 lg:space-x-12">
-            <a href="#que-es" className="text-[#5c6474] hover:underline text-2xl font-medium">¿Que es Qxm?</a>
-            <a href="#trabajadores" className="text-[#5c6474] hover:underline text-2xl font-medium">Trabajadores</a>
-            <a href="#gobiernos" className="text-[#5c6474] hover:underline text-2xl font-medium">Gobiernos</a>
+            <a href="#que-es" className="text-[#5c6474] hover:underline text-xl font-medium">¿Que es Qxm?</a>
+            <a href="#trabajadores" className="text-[#5c6474] hover:underline text-xl font-medium">Trabajadores</a>
+            <a href="#gobiernos" className="text-[#5c6474] hover:underline text-xl font-medium">Gobiernos</a>
           </nav>
 
           <div className="flex items-center ml-12 space-x-4 lg:space-x-10 ">
-            <a href="#iniciar-sesion" className="text-[#0d4676] hover:text-qxm-pink text-2xl font-semibold">Iniciar sesión</a>
+            <a href="#iniciar-sesion" className="text-[#0d4676] hover:text-qxm-pink text-xl font-semibold">Iniciar sesión</a>
             <a href="#registrate" className="bg-qxm-pink text-white font-semibold py-2 px-6 rounded-md shadow-md text-lg border-2 border-transparent hover:bg-white hover:text-qxm-pink hover:border-qxm-pink transition-colors duration-300">
               Regístrate
             </a>
