@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import qxmLogoFooter from "./assets/logo_footer.svg"
 import Pagination from './components/Pagination';
 import { ChevronDown } from 'lucide-react'; //comp Sidebar
+import imgNota2 from "./assets/pexels-n-voitkevich-6863260.webp";
+import imgNota1 from "./assets/Nota1.webp";
 
 // Importaciones de iconos de Lucide React
 import {
@@ -121,43 +123,85 @@ const blogPosts: BlogPost[] = [ // Aplicamos el tipo BlogPost[]
         <li>✅ Cerca tuyo</li>
         <li>✅ Con opiniones de otros usuarios</li>
       </ul>
-      <p>👉 <a href="#">Pedí ayuda para tu casa acá</a></p>
+      <p>👉 <a href="https://www.qxm.com.ar/pedido/nuevo" target="_blank" rel="noopener noreferrer"><span class="text-blue-500 font-bold">Pedí ayuda para tu casa acá</a></p>
     `,
     author: "María González",
     category: "Consejos",
-    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=400&fit=crop",
+    image: imgNota1,
     featured: true
   },
   {
     id: 2,
-    title: "Mantenimiento Preventivo: Claves para el Hogar",
-    excerpt: "Aprende qué tareas de mantenimiento realizar regularmente para evitar costosas reparaciones.",
-    content: `
-      <p>El mantenimiento preventivo es esencial para conservar tu hogar en óptimas condiciones.</p>
-      
-      <h3>Revisiones Eléctricas</h3>
-      <p>Programa inspecciones anuales del sistema eléctrico para prevenir problemas.</p>
-      
-      <h3>Plomería</h3>
-      <p>Revisa las cañerías y grifos regularmente para detectar fugas temprano.</p>
-    `,
+    "title": "¿Te subió la boleta de luz? Estos cambios simples te pueden ayudar a gastar menos (y saber cuándo llamar a un profesional)",
+  "excerpt": "Con el frío, el uso de estufas, luces, termotanques y electrodomésticos se dispara... y la boleta de luz lo refleja. Pero no todo está perdido: hay pequeñas acciones que podés hacer por tu cuenta para reducir el consumo energético.",
+  "content": `
+      <p>Con el frío, el uso de estufas, luces, termotanques y electrodomésticos se dispara… y la boleta de luz lo refleja. Pero no todo está perdido: hay pequeñas acciones que podés hacer por tu cuenta para reducir el consumo energético. Y cuando no alcanza, siempre está la opción de pedir ayuda a un profesional confiable.</p>
+      <p>Acá te dejamos una guía rápida para saber qué podés hacer vos mismo y cuándo conviene llamar a alguien que sepa.</p>
+
+      <h3>1. Cambiá las lámparas por LED</h3>
+      <p>Los focos LED consumen hasta 80% menos que los incandescentes y duran mucho más. Cambiarlos en los ambientes que más usás es un primer paso muy efectivo.</p>
+      <p><b>¿Cuándo llamar a alguien?</b><br> Si querés hacer una renovación total, agregar luces dimerizables o automatizadas, es mejor contar con un electricista que te asesore e instale todo correctamente.</p>
+
+      <h3>2. Sellá puertas y ventanas</h3>
+      <p>El calor se escapa por cualquier rendija. Colocar burletes autoadhesivos en puertas y ventanas es fácil, económico y reduce la necesidad de calefacción.</p>
+      <p><b>¿Cuándo llamar a alguien?</b><br> Si hay filtraciones de humedad, marcos rotos o ventanas mal colocadas, mejor consultar a un carpintero o especialista en arreglos.</p>
+
+      <h3>3. Desenchufá lo que no usás</h3>
+      <p>Muchos equipos siguen consumiendo energía aún apagados (el famoso “consumo vampiro”). Desenchufar cargadores, microondas o TV cuando no se usan puede ayudar.</p>
+      <p>⚡ <b>Consejo extra:</b> Usá zapatillas con interruptor para cortar varios enchufes a la vez.</p>
+
+      <h3>4. Revisá tu instalación eléctrica → acá sí necesitás a un experto</h3>
+      <p>Si te saltan los tapones cada vez que prendés varias cosas, o tenés instalaciones viejas, no es algo que se pueda resolver con un tutorial. Ahí sí necesitás ayuda profesional.</p>
+      <p>👨‍🔧 Llamá a un electricista matriculado para hacer una revisión segura, eficiente y evitar accidentes. 👉 <a href="#">Pedí ayuda acá</a></p>
+
+      <h3>5. Mantenimiento de termotanques o calefactores → no lo improvises</h3>
+      <p>Un calefactor que no prende bien o un termotanque que tarda demasiado en calentar puede estar consumiendo de más o funcionando mal.</p>
+      <p>👨‍🔧 Necesitás a un técnico de gas para hacer la limpieza, revisar el consumo y dejarlo en condiciones.</p>
+      <p>✋ Pedí ayuda cuando lo necesites, para eso está quien x mi.</p>
+
+      <p>Hay muchos cambios simples que ayudan a bajar el consumo eléctrico, y vale la pena empezar por ahí. Pero cuando se trata de instalaciones, reparaciones o seguridad, lo mejor es dejarlo en manos de expertos.</p>
+      <p>En Quién por mí, podés buscar técnicos, electricistas, gasistas o especialistas en arreglos cerca tuyo y pedir presupuestos gratis.</p>
+      <p>👉 <a href="#">Pedí un presupuesto acá</a></p> `,
     author: "Carlos Ruiz",
     category: "Mantenimiento",
-    image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=400&fit=crop",
+    image: imgNota2,
     featured: false
   },
   {
     id: 3,
-    title: "Reformas de Baño: Tendencias 2024",
-    excerpt: "Las últimas tendencias en diseño de baños que están revolucionando los hogares.",
-    content: `
-      <p>Los baños modernos combinan funcionalidad con estética. Descubre las tendencias más populares.</p>
-      
-      <h3>Minimalismo</h3>
-      <p>Líneas limpias y espacios despejados son la clave del diseño moderno.</p>
-      
-      <h3>Sustentabilidad</h3>
-      <p>Materiales ecológicos y sistemas de ahorro de agua están en auge.</p>
+    "title": "Mudarte sin gastar de más: 7 cosas que deberías saber (y preguntar) antes de cambiar de casa",
+  "excerpt": "Cambiar de casa es emocionante… pero también puede convertirse en un dolor de cabeza si no hacés algunas preguntas clave antes de mudarte. Entre imprevistos, arreglos y servicios que nadie te avisó que ibas a necesitar, los gastos pueden dispararse.",
+  "content": `
+      <p>Cambiar de casa es emocionante… pero también puede convertirse en un dolor de cabeza si no hacés algunas preguntas clave antes de mudarte. Entre imprevistos, arreglos y servicios que nadie te avisó que ibas a necesitar, los gastos pueden dispararse. Por eso, en este blog te compartimos 7 puntos que te conviene chequear antes de dar el gran paso, ¡y cómo podés resolverlos fácil con Quién Por Mí!</p>
+
+      <h3>1. ¿Hay filtraciones, humedad o problemas eléctricos?</h3>
+      <p>Parece básico, pero muchas veces recién lo descubrís cuando ya estás viviendo ahí. Antes de mudarte, revisá bien techos, paredes y enchufes.</p>
+      <p>👉 <a href="https://www.qxm.com.ar/pedido/nuevo" target="_blank" rel="noopener noreferrer"><span class="text-blue-500 font-bold">Buscá ahora un especialista en tu zona</span></a></p>
+
+      <h3>2. ¿Qué tan seguros están las cerraduras y aberturas?</h3>
+      <p>¿La puerta cierra bien? ¿La cerradura es segura? ¿Las ventanas traban correctamente? Un cambio de cerradura o arreglo de carpintería puede evitarte más de un susto. Mejor preguntar antes…</p>
+
+      <h3>3. ¿Tenés que pintar o reparar algo antes de entrar?</h3>
+      <p>Muchos departamentos o casas se entregan "tal cual están", lo que muchas veces significa manchas, humedad vieja o colores que no son lo tuyo. Aclará este punto con la inmobiliaria para evitar malos entendidos o costos que no te corresponden.</p>
+
+      <h3>4. ¿Funciona bien la instalación de gas, agua y cloacas?</h3>
+      <p>No es lo más agradable de revisar, pero sí fundamental. Consultá si hubo controles recientes o si necesitás ver las conexiones. Lo barato sale caro si no te asegurás antes.</p>
+
+      <h3>5. ¿Con qué servicios contás?</h3>
+      <p>Quizás te enamoraste del barrio, pero mudarte también implica mover tu vida, tus hábitos y cosas de confianza ¿Hay supermercados, gimnasios, médicos o espacios verdes accesibles? Contemplar los costos de movilidad también es importante.</p>
+
+      <h3>6. ¿Vas a necesitar ayuda para la mudanza?</h3>
+      <p>Mudarte es agotador. Fletes, cajas, muebles que no entran… Si todavía no conseguiste ayuda, en Quién Por Mí podés buscar fletes, ayudantes, y hasta personas que te armen los muebles después. Cotizá con tiempo para sumarlo a tu presupuesto.</p>
+      <p>👉 <a href="https://www.qxm.com.ar/pedido/nuevo" target="_blank" rel="noopener noreferrer"><span class="text-blue-500 font-bold">Conseguí flete + ayuda</span></a></p>
+
+      <h3>7. ¿Hay cosas que querés renovar o adaptar?</h3>
+      <p>¿Te gustaría cambiar los pisos? ¿Hacer una ampliación? ¿Modificar algo de la estructura? Antes de gastar en materiales o contratar a alguien, es clave dejarlo todo en claro con el dueño o la inmobiliaria.</p>
+      <p>Ahora, si ya tenés el visto bueno, en Quién Por Mí encontrás albañiles, maestros mayores de obra y especialistas que pueden ayudarte a hacerlo bien desde el principio.</p>
+      <p>👉 <a href="https://www.qxm.com.ar/pedido/nuevo" target="_blank" rel="noopener noreferrer"><span class="text-blue-500 font-bold">Pedí presupuesto para reformas o ampliaciones acá</span></a></p>
+
+      <p><b>Mudarte puede ser más fácil (y más barato)</b></p>
+      <p>La clave está en anticiparse. Hacer estas preguntas y resolverlas a tiempo no solo te evita gastos innecesarios, también te da tranquilidad. Y si ya estás en plena mudanza o recién llegás, no estás solo: en Quién Por Mí conectás rápido con personas reales que pueden ayudarte a resolver lo que necesitás en tu hogar.</p>
+      <p>👉 <a href="https://www.qxm.com.ar/" target="_blank" rel="noopener noreferrer"><span class="text-blue-500 font-bold">Entrá ahora a qxm.com.ar y encontrá ayuda cerca tuyo.</span></a></p>
     `,
     author: "Ana Martínez",
     category: "Reformas",
